@@ -1,0 +1,21 @@
+name: PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 列出变更文件
+        run: |
+          echo "## Changed Files" >> $GITHUB_STEP_SUMMARY
+          git diff --name-only origin/main..HEAD | sed 's/^/- /' >> $GITHUB_STEP_SUMMARY
