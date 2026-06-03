@@ -11,13 +11,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: 环境初始化
-        run: ./init.sh
+      - name: Run validate
+        run: bash harness/validate.sh
       - name: ShellCheck
+        uses: ludeeus/action-shellcheck@master
+        with:
+          scandir: .
+          severity: warning
+        continue-on-error: true
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Lint Python
         run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y -qq shellcheck
-          shellcheck init.sh || true
+          pip install ruff
+          ruff check . --exclude .github --ignore E501 || true

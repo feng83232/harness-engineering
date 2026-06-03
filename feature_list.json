@@ -1,0 +1,43 @@
+{
+  "project": "Harness Engineering",
+  "updated": "2026-06-03",
+  "features": [
+    {
+      "id": "core-structure",
+      "description": "核心目录结构 + AGENTS.md + feature_list + progress.md 体系",
+      "status": "passing",
+      "notes": "标准 AI agent 工作流骨架"
+    },
+    {
+      "id": "init-validate",
+      "description": "init.sh 统一启动与健康检查",
+      "status": "passing",
+      "notes": "Python/pip/git hooks 检查"
+    },
+    {
+      "id": "github-actions-ci",
+      "description": "GitHub Actions CI：lint + test + security scan",
+      "status": "pending",
+      "notes": "待实现 .github/workflows/ci.yml"
+    },
+    {
+      "id": "harness-evaluator",
+      "description": "harness/ 评估目录：rubric + 质量文档 + 验证脚本",
+      "status": "pending",
+      "notes": "evaluator-rubric.md, quality-document.md, validate.sh, runner.py"
+    },
+    {
+      "id": "error-pattern-library",
+      "description": "错误模式库：记录常见错误与修复模式",
+      "status": "pending",
+      "notes": "harness/error-patterns.md"
+    },
+    {
+      "id": "cross-session-handoff",
+      "description": "跨会话交接：session-handoff.md 模板",
+      "status": "pending",
+      "notes": "待实现"
+    }
+  ],
+  "active_feature": null
+}
